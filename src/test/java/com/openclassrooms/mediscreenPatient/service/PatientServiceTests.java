@@ -1,7 +1,6 @@
-package com.openclassrooms.mediscreenPatient.Service;
+package com.openclassrooms.mediscreenPatient.service;
 
 import com.openclassrooms.mediscreenPatient.model.Patient;
-import com.openclassrooms.mediscreenPatient.service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
