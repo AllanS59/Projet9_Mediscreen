@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <form action="#" th:action="@{/patient/validate}" th:object="${patient}" method="post" class="form-horizontal" style="width: 100%">
+        <form action="#" th:action="@{/web/patient/validate}" th:object="${patient}" method="post" class="form-horizontal" style="width: 100%">
 
             <div class="form-group">
                 <label for="family" class="col-sm-2 control-label">Family</label>
@@ -59,7 +59,7 @@
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <a class="btn btn-danger btn-sm" href="/patient/list">Cancel</a>
+                    <a class="btn btn-danger btn-sm" href="/web/patient/list">Cancel</a>
                     <input class="btn btn-primary btn-sm" type="submit" value="Add Patient">
                 </div>
             </div>
