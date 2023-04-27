@@ -5,30 +5,33 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document
 public class Note {
 
     @Id
-    @Field("_id")
-    private String noteId;
+    private String id;
 
     private Integer patId;
 
+    @Field("Patient")
     private String patient;
 
     @Field("Practitioner's notes/recommendations")
     private String note;
 
+    @Field("Date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
 
-    public String getNoteId() {
-        return noteId;
+    public String getId() {
+        return id;
     }
 
-    public void setNoteId(String noteId) {
-        this.noteId = noteId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getPatId() {

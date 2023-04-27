@@ -24,11 +24,11 @@ public class NoteService {
 
     /**
      * GET a note by note Id from database, if exists
-     * @param noteId the note Id of the note to find
+     * @param id the note Id of the note to find
      * @return Optional<Note> note found if any.
      */
-    public Optional<Note> getNoteById(String noteId) {
-        return noteRepository.findById(noteId);
+    public Optional<Note> getNoteById(String id) {
+        return noteRepository.findById(id);
     }
 
 
@@ -38,7 +38,7 @@ public class NoteService {
      * @return List<Note> notes found if any.
      */
     public List<Note> getNoteByPatient(int patientId) {
-        return noteRepository.findByPatientId(patientId);
+        return noteRepository.findByPatId(patientId);
     }
 
 
@@ -48,7 +48,7 @@ public class NoteService {
      * @return List<Note> notes found if any.
      */
     public List<Note> getNoteByPatient(String patientName) {
-        return noteRepository.findByPatientName(patientName);
+        return noteRepository.findByPatient(patientName);
     }
 
 
@@ -74,10 +74,10 @@ public class NoteService {
 
     /**
      * DELETE a note by Id
-     * @param noteId the ID of the patient to delete
+     * @param id the ID of the patient to delete
      */
-    public void deleteNoteById (String noteId){
-        noteRepository.deleteById(noteId);
+    public void deleteNoteById (String id){
+        noteRepository.deleteById(id);
     }
 
 
