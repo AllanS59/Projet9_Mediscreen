@@ -18,19 +18,32 @@ public class PatientController {
 
 
     @GetMapping("/patients")
-    public String getPatients() {
+    public List<Patient> getPatients() {
         List<Patient> listPatients = patientService.getAllPatients();
-        String json = new Gson().toJson(listPatients);
-        return json;
+        return listPatients;
+    }
+
+
+    @GetMapping("/patient/{id}")
+    public Patient getPatientById(@PathVariable(name = "id") int patientId) {
+
+        Optional<Patient> patientById = patientService.getPatientById(patientId);
+        if(patientById.isPresent()){
+            return patientById.get();
+        }
+        else {
+            return null;
+        }
     }
 
     @GetMapping("/patient")
-    public String getPatientById(@RequestParam(name = "patientId") int patientId) {
+    public List<Patient> getPatientByFamily(@RequestParam(name = "family") String family) {
 
-        Optional<Patient> patientById = patientService.getPatientById(patientId);
-        String json = new Gson().toJson(patientById.get());
-        return json;
+        List<Patient> patientsByFamily = patientService.getPatientByFamily(family);
+        return patientsByFamily;
+
     }
+
 
     @PostMapping("/patient")
     public Patient postPatient(@RequestBody Patient patient) {
@@ -46,8 +59,8 @@ public class PatientController {
     }
 
 
-    @DeleteMapping("/patient")
-    public void deletePersonById(@RequestParam(name = "patientId") int patientId) {
+    @DeleteMapping("/patient/{id}")
+    public void deletePersonById(@PathVariable(name = "id") int patientId) {
         patientService.deletePatientById(patientId);
     }
 

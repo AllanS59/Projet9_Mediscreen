@@ -27,7 +27,7 @@ public class NoteRepositoryTests {
 
     @Test
     public void getNoteById() {
-        Optional<Note> note = noteRepository.findById("6447f94b66c5084ba01a8c8c");
+        Optional<Note> note = noteRepository.findById("6458be2df9e0225dc7367c89");
         assertEquals("TestBorderline", note.get().getPatient());
     }
 

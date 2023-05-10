@@ -43,7 +43,7 @@ public class NoteControllerTests {
 
     @Test
     public void getNoteByIdTest () throws Exception   {
-        mockMvc.perform(get("/note?id=6447f94b66c5084ba01a8c8c")).andExpect(status().isOk()).andExpect(jsonPath("$.patient", is("TestBorderline")));
+        mockMvc.perform(get("/note/6458be2df9e0225dc7367c89")).andExpect(status().isOk()).andExpect(jsonPath("$.patient", is("TestBorderline")));
     }
 
 

@@ -22,8 +22,7 @@ public class MediscreenPatientApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		List<Patient> allPatients = patientService.getAllPatients();
-		System.out.println(allPatients.get(0).getFamily());
+		System.out.println("Application started");
 
 	}
 

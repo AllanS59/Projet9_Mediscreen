@@ -43,7 +43,7 @@ public class NoteWebControllerTests {
 
     @Test
     public void patientUpdatePageTest() throws Exception {
-        mockMvc.perform(get("/web/note/update/6447f94b66c5084ba01a8c8c"))
+        mockMvc.perform(get("/web/note/update/6458be2df9e0225dc7367c89"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("noteUpdate"));
