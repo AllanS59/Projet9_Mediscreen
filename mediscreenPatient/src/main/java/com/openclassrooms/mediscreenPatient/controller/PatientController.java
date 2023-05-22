@@ -1,6 +1,5 @@
 package com.openclassrooms.mediscreenPatient.controller;
 
-import com.google.gson.Gson;
 import com.openclassrooms.mediscreenPatient.model.Patient;
 import com.openclassrooms.mediscreenPatient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,7 +10,59 @@
 <body>
 <div class="container">
 
-    <div class="row"><h2>Patient Diabete Diagnostic</h2></div>
+    <div class="row"><h2>Patient Diabet Diagnostic</h2></div>
+    <div class="row"><h3>Patient's information :</h3></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Data</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tr>
+
+        <tr>
+            <td>Patient ID</td>
+            <td><span th:text="${assessDTO.patient.patientId}"> Id </span></td>
+        </tr>
+        <tr>
+            <td>Family Name</td>
+            <td><span th:text="${assessDTO.patient.family}"> Id </span></td>
+        </tr>
+        <tr>
+            <td>Given Name</td>
+            <td><span th:text="${assessDTO.patient.given}"> Id </span></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><span th:text="${assessDTO.age}"> Id </span></td>
+        </tr>
+        <tr>
+            <td>Diabet Risk level</td>
+            <td><span th:text="${assessDTO.riskLevel}"> Id </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row"><h3>Practitioner's notes and recommendations :</h3></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Practitioners's notes / recommendations</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tr>
+
+        <tr th:each="note: ${assessDTO.notes}">
+            <td><span th:text="${#dates.format(note.date, 'yyyy-MMM-dd')}"> Date </span></td>
+            <td><span th:text="${note.note}"> Notes </span></td>
+        </tr>
+
+        </tbody>
+    </table>
 
 </div>
 </body>
