@@ -1,0 +1,41 @@
+version: "3.3"
+services:
+  mysql_db:
+    image: mysql:5.7
+    container_name: mediscreen_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: allan
+      MYSQL_DATABASE: mediscreen
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    networks:
+    - mediscreen
+    ports:
+    - "3308:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+    - "./doc/mediscreen_database.sql:/docker-entrypoint-initdb.d/1.sql"
+    - "./doc/mediscreen_test_data.sql:/docker-entrypoint-initdb.d/2.sql"
+
+  mediscreen_patient:
+    container_name: mediscreen_patient
+    build: .
+    image: mediscreen-patient:0.0.2
+    restart: unless-stopped
+    ports:
+    - "7078:8081"
+    environment:
+      MYSQL_HOST: mysql_db
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: mediscreen
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    depends_on:
+    - mysql_db
+    networks:
+    - mediscreen
+
+networks:
+  mediscreen:
+    driver: bridge
