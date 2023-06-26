@@ -51,7 +51,7 @@ public class PatientServiceTests {
         newPatient.setFamily("FamilyUnitTest");
         newPatient.setGiven("GivenUnitTest");
         newPatient.setDob(date);
-        newPatient.setFamily("M");
+        newPatient.setSex("M");
 
         newPatient = patientService.addPatient(newPatient);
         assertEquals(1, patientService.getPatientByFamily("FamilyUnitTest").size());

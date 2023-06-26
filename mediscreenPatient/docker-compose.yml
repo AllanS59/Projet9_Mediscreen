@@ -5,10 +5,10 @@ services:
     container_name: mediscreen_db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: allan
+      MYSQL_ROOT_PASSWORD: rootroot
       MYSQL_DATABASE: mediscreen
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      MYSQL_USER: allan
+      MYSQL_PASSWORD: password
     networks:
     - mediscreen
     ports:
@@ -29,8 +29,8 @@ services:
       MYSQL_HOST: mysql_db
       MYSQL_PORT: 3306
       MYSQL_DB_NAME: mediscreen
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      MYSQL_USER: allan
+      MYSQL_PASSWORD: password
     depends_on:
     - mysql_db
     networks:
@@ -39,3 +39,5 @@ services:
 networks:
   mediscreen:
     driver: bridge
+
+

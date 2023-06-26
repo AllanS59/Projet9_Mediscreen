@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "mediscreenPatient", url = "localhost:8081")
+@FeignClient(name = "${feignPatient.name}", url = "${feignPatient.url}")
 public interface MediscreenPatientProxy {
 
     @GetMapping("/patients")

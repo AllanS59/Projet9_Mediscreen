@@ -1,35 +1,36 @@
-version: '3.3'
+version: '5'
 services:
   mongo:
+    image: mongo:latest
     ports:
     - '27017:27017'
-    container_name: dkrcomp-mongo
-    restart: always
-    logging:
-      options:
-        max-size: 1g
-    environment:
-    - MONGO_INITDB_ROOT_USERNAME=mongoadmin
-    - MONGO_INITDB_ROOT_PASSWORD=bdung
-    image: mongo
-
-    mediscreen_notes:
-      container_name: mediscreen_notes
-      build: .
-      image: mediscreen-notes:0.0.2
-      restart: unless-stopped
-      ports:
-      - "7079:8081"
-      environment:
-        NOSQL_HOST: nosql_db
-        NOSQL_PORT: 27017
-        NOSQL_DB_NAME: mediscreen
-
-      depends_on:
-      - mongo
-      networks:
-      - mediscreen
-
+    container_name: mongo
     networks:
-      mediscreen:
-        driver: bridge
+    - mediscreen
+    volumes:
+    - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  mediscreen_notes:
+    container_name: mediscreen_notes
+    build: .
+    image: mediscreen-notes:0.0.2
+    restart: unless-stopped
+    ports:
+    - "7079:8082"
+    environment:
+      NOSQL_HOST: host.docker.internal
+      NOSQL_PORT: 27017
+      NOSQL_DB_NAME: mediscreen
+
+
+
+    depends_on:
+    - mongo
+    networks:
+    - mediscreen
+
+networks:
+  mediscreen:
+    driver: bridge
+
+
